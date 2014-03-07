@@ -1,0 +1,12 @@
+A project done as part of the Twin Cities Code For America Hackathon
+See "The Meetup":http://www.meetup.com/cfabrigade/Twin-Cities/871962/ for more details on the event.
+
+The short term goal was to extract crime data from the weekly Excel file produced by the St Paul police department. See "our map":https://michaelaltmann.cartodb.com/tables/3978/#/map for a map of this data displayed on the CartoDB service.  Ultimately, we want to provide this as a data feed for timely crime alerts and maps.
+
+There is a separate scraperwiki "project":https://scraperwiki.com/scrapers/findstpaulpoliceincidentreports/ that combs through the St Paul web site and finds the URL for all of the spreadsheets.  This list is the basis for the processing done by the StPaulCrimeStat scraperwiki.
+
+We did not get time to deal with two data quality issues.  First, some addresses have street names that we can't geocode because there are missing spaces, such as "OLDHUDSON RD".  Second, some address are an intersection and only the first part is shown in the report, such as "MARION ST &"
+
+Update: Google's geocoding service seems to handle these better than the arcgisonline geocoding service we were trying.  If you take the data and import them into a Google Fusion table, it seems to handle most of the strange addresses.
+
+There is a java application hosted on "GitHub":https://github.com/michaelaltmann/brokenwindows that illustrates how to query the fusion table and provide the user with a list of crimes near an address.
